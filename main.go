@@ -6,13 +6,13 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	"github.com/hisyntax/struct-converter/convertjson"
+	"github.com/hisyntax/struct-converter/converter"
 	"github.com/joho/godotenv"
 )
 
 func main() {
 	l := log.New(os.Stdout, "json-converter-server ", log.LstdFlags)
-	ch := convertjson.NewConverter(l)
+	ch := converter.NewConverter(l)
 
 	if err := godotenv.Load(); err != nil {
 		l.Println(".env not found")
