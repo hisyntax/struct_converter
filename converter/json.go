@@ -11,6 +11,15 @@ type Converter struct {
 	l *log.Logger
 }
 
+//consts
+var (
+	String    string
+	Int       int
+	Float     float64
+	Bool      bool
+	Interface interface{}
+)
+
 func NewConverter(l *log.Logger) *Converter {
 	return &Converter{l}
 }
