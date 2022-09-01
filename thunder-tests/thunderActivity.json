@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "37063175-042b-4837-9d97-deb152a109e6",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1:8080",
+    "url": "127.0.0.1:8080",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-09-01T15:24:00.121Z",
+    "modified": "2022-09-01T15:26:06.444Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
