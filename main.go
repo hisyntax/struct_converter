@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	"github.com/hisyntax/struct-converter/converter"
+	"github.com/iqquee/struct-converter/converter"
 	"github.com/joho/godotenv"
 )
 

@@ -5,20 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"reflect"
 )
 
 type Converter struct {
 	l *log.Logger
 }
-
-//consts
-var (
-	String    string
-	Int       int
-	Float     float64
-	Bool      bool
-	Interface interface{}
-)
 
 func NewConverter(l *log.Logger) *Converter {
 	return &Converter{l}
@@ -26,12 +18,23 @@ func NewConverter(l *log.Logger) *Converter {
 
 //this method takes in a json object payload and converts it to a Go struct
 func (ct Converter) JsonToStruct(w http.ResponseWriter, r *http.Request) {
-	var payload interface{}
-	// var output
-	decoder := json.NewDecoder(r.Body)
-	if err := decoder.Decode(&payload); err != nil {
+	var payload []interface{}
+	var response []interface{}
+
+	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
 		fmt.Println(err)
 	}
+	//evens are the field name and odds are the field type
+	for i, value := range payload {
+		dataType := reflect.TypeOf(value).String()
 
-	ct.l.Println(payload)
+		if i%2 == 0 {
+			response = append(response, value)
+		} else {
+			response = append(response, dataType)
+		}
+	}
+	// fmt.Println(output)
+	ct.l.Println(response)
+	json.NewEncoder(w).Encode(response)
 }
